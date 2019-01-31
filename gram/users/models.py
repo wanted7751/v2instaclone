@@ -8,6 +8,8 @@ from django.utils.encoding import python_2_unicode_compatible
 
 class User(AbstractUser):
 
+    """"User Model"""
+
     GENDER_CHOICES = (
         ('male', 'Male'),
         ('female', 'Female'),
