@@ -4,48 +4,35 @@ from . import models, serializers
 
  
 
-class ListAllImage(APIView):
+class Feed(APIView):
 
     def get(self, request, format=None):
-        #request 는 클라이언트에게 오브젝트를 요청하는 것 이다. 
-        #format 은 json, xml 이 될 수 있는대 디폴트로 none으로 지정하였다. 
-        #none처럼 지정되지 않았으면 json 포멧으로 응답한다. 
+
+        user = request.user  
+
+        following_users = user.following.all()
+
+        image_list = []
+
+        for following_user in following_users:
+
+            user_images = following_user.images.all()
+
+            for image in user_images:
+
+                image_list.append(image)
+                # 이렇게 각각의 사진들을 불러와서 큰 사진첩에 다시 넣어줘야 섞이게된다. 
+                # 그러나 순서대로 되지만 각 user가 넣은 순서대로 된다. 예를들어
+                # 니콜1, 니콜2, 린1,린2 이런순서대로 되니 코드를 수정해줘야한다. 
+                
+
+        sorted_list = sorted(image_list, key=get_key, reverse=True)
         
-        all_images = models.Image.objects.all()
-        #현재는 파이썬 오브젝트라서 브라우저가 이해를 하지 못한다. 
-        #장고의 Image테이블을 갖고온다. 
+        print(sorted_list)
 
-        serializer = serializers.ImageSerializer(all_images, many=True)
-        #많은 이미지를 ImageSerializer 하니 many=True를 함으로써 많은 사진을 시리얼 한다는걸 명시
-        #serializer한 ImageSerializer를 갖고온다. 
-
-        return Response(data=serializer.data)
-        #위에서 브라우저는 request 하고 우리는 return 으로 response를 한다. 
-        #보다시피 http response이고 멋진 method를 갖고있다. 
-
-
-class ListAllComments(APIView):
-
-    def get(self, request, format=None):
-
-        # print(request.user.id)
-        # user_id = request.user.id
-
-        all_comments = models.Comment.objects.all()
-        # all_comments = models.Comment.objects.filter(creator=user_id)
-        
-        serializer = serializers.CommentSerializer(all_comments, many=True)
+        serializer = serializers.ImageSerializer(sorted_list, many=True)
 
         return Response(data=serializer.data)
 
-
-class ListAllLikes(APIView):
-
-    def get(self, request, format=None):
-
-        all_likes = models.Like.objects.all()
-
-        serializer = serializers.LikeSerializer(all_likes, many=True)
-
-        return Response(data=serializer.data)
-
+def get_key(image):
+    return image.created_at
