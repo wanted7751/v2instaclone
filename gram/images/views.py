@@ -13,10 +13,35 @@ class ListAllImage(APIView):
         
         all_images = models.Image.objects.all()
         #현재는 파이썬 오브젝트라서 브라우저가 이해를 하지 못한다. 
+        #장고의 Image테이블을 갖고온다. 
 
         serializer = serializers.ImageSerializer(all_images, many=True)
         #많은 이미지를 ImageSerializer 하니 many=True를 함으로써 많은 사진을 시리얼 한다는걸 명시
+        #serializer한 ImageSerializer를 갖고온다. 
 
         return Response(data=serializer.data)
         #위에서 브라우저는 request 하고 우리는 return 으로 response를 한다. 
         #보다시피 http response이고 멋진 method를 갖고있다. 
+
+
+class ListAllComments(APIView):
+
+    def get(self, request, format=None):
+
+        all_comments = models.Comment.objects.all()
+        
+        serializer = serializers.CommentSerializer(all_comments, many=True)
+
+        return Response(data=serializer.data)
+
+
+class ListAllLikes(APIView):
+
+    def get(self, request, format=None):
+
+        all_likes = models.Like.objects.all()
+
+        serializer = serializers.LikeSerializer(all_likes, many=True)
+
+        return Response(data=serializer.data)
+
