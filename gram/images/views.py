@@ -26,13 +26,13 @@ class Feed(APIView):
                 # 니콜1, 니콜2, 린1,린2 이런순서대로 되니 코드를 수정해줘야한다. 
                 
 
-        sorted_list = sorted(image_list, key=get_key, reverse=True)
-        
+        # sorted_list = sorted(image_list, key=get_key, reverse=True)
+        sorted_list = sorted(image_list, key=lambda image: image.create_at, reverse=True)
         print(sorted_list)
 
         serializer = serializers.ImageSerializer(sorted_list, many=True)
 
         return Response(data=serializer.data)
 
-def get_key(image):
-    return image.created_at
+# def get_key(image):
+#     return image.created_at
