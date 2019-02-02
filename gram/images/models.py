@@ -42,6 +42,7 @@ class Comment(TimeStampedModel):
     def __str__(self):
         return '{} - {}'.format(self.message, self.creator)
 
+
 @python_2_unicode_compatible
 class Like(TimeStampedModel):
 
@@ -52,3 +53,5 @@ class Like(TimeStampedModel):
 
     def __str__(self):
         return 'User: {} - Image Caption: {}'.format( self.creator.username, self.image)
+
+
