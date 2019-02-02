@@ -27,7 +27,7 @@ class Feed(APIView):
                 
 
         # sorted_list = sorted(image_list, key=get_key, reverse=True)
-        sorted_list = sorted(image_list, key=lambda image: image.create_at, reverse=True)
+        sorted_list = sorted(image_list, key=lambda image: image.created_at, reverse=True)
         print(sorted_list)
 
         serializer = serializers.ImageSerializer(sorted_list, many=True)
