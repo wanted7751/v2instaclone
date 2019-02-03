@@ -8,6 +8,7 @@ from gram.users import models as user_models
 
 class FeedUserSerializer(serializers.ModelSerializer):
 
+
     class Meta:
         model= user_models.User
         fields=(
@@ -19,7 +20,7 @@ class FeedUserSerializer(serializers.ModelSerializer):
 
 class CommentSerializer(serializers.ModelSerializer):
     
-    creator = FeedUserSerializer()
+    creator = FeedUserSerializer(read_only = True)
 
     class Meta:
         model=models.Comment
