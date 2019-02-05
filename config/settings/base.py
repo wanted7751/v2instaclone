@@ -70,6 +70,7 @@ THIRD_PARTY_APPS = [
     'allauth.socialaccount',
     'rest_framework', # Rest FrameWork
     'taggit',# Tags for the photos
+    'taggit_serializer'
     
 ]
 LOCAL_APPS = [

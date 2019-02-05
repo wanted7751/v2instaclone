@@ -1,12 +1,13 @@
 from rest_framework import serializers
 from . import models
 from gram.users import models as user_models
+from taggit_serializer.serializers import (TagListSerializerField,TaggitSerializer)
 # 현재 여기선 1-29 노션 에서 언급하다시피 meta를 함으로써 참고로 만든것이며
 # 파이썬의 obejct를 json 화 시키는 단계 이다. 여기선 serializer만 하며 
 # views 에서 직접 json 화 시킨다. 여기서는 meta 참고만 하는 방식 작성
 
 
-class UserProfileImagesSerializer(serializers.ModelSerializer):
+class CountImageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Image
@@ -64,6 +65,7 @@ class ImageSerializer(serializers.ModelSerializer):
     # like_set = LikeSerializer(many=True)
     # 이는 related_name을 defualt로 설정한 값 (classname_set)
     # related_name 지정해줄시 comments, likes 
+    tags = TagListSerializerField()
 
     class Meta:
         model = models.Image
@@ -80,7 +82,8 @@ class ImageSerializer(serializers.ModelSerializer):
             'caption',
             'comments',
             'like_count',
-            'creator'
+            'creator',
+            'tags'
         )
 
 
