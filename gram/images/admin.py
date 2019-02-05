@@ -7,6 +7,13 @@ from . import models
 
 @admin.register(models.Image)
 class ImageAdmin(admin.ModelAdmin):
+    
+    def get_queryset(self, request):
+        return super(ImageAdmin, self).get_queryset(request).prefetch_related('tags')
+
+    def tag_list(self, obj):
+        return u", ".join(o.name for o in obj.tags.all())
+
 
     list_display_links=(
         'location',
@@ -28,8 +35,11 @@ class ImageAdmin(admin.ModelAdmin):
         'caption',
         'creator',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'tag_list'
     )
+
+     
 
 @admin.register(models.Like)
 class LikeAdmin(admin.ModelAdmin):

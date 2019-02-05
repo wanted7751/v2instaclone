@@ -61,6 +61,7 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
     # 'django.contrib.humanize', # Handy template tags
     'django.contrib.admin',
+    
 ]
 THIRD_PARTY_APPS = [
     'crispy_forms',
@@ -68,6 +69,8 @@ THIRD_PARTY_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'rest_framework', # Rest FrameWork
+    'taggit',# Tags for the photos
+    
 ]
 LOCAL_APPS = [
     'gram.users.apps.UsersAppConfig',
@@ -251,3 +254,5 @@ SOCIALACCOUNT_ADAPTER = 'gram.users.adapters.SocialAccountAdapter'
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+
+TAGGIT_CASE_INSENSITIVE = True
