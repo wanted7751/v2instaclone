@@ -46,7 +46,7 @@ class ImageSerializer(serializers.ModelSerializer):
 
     comments = CommentSerializer(many=True)
     # likes = LikeSerializer(many=True)
-    creator = FeedUserSerializer()
+    creator = FeedUserSerializer(read_only = True)
     # comment_set = CommentSerializer(many=True)
     # like_set = LikeSerializer(many=True)
     # 이는 related_name을 defualt로 설정한 값 (classname_set)
