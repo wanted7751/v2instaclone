@@ -4,6 +4,8 @@ from . import models, serializers
 from rest_framework import status
 
 
+
+
 class ExploreUsers(APIView):
 
     def get(self, request, fotmat=None):
@@ -53,4 +55,19 @@ class UnFollowUsers(APIView):
 
             return Response(status=status.HTTP_200_OK)
 
+
+class UserProfile(APIView):
+
+    def get(self, request, username, format=None):
+
+        try:
+            found_user = models.User.objects.get(username=username)
+            # print(type(username))
+        except models.User.DoesNotExist:
+            return Response(status = status.HTTP_404_NOT_FOUND)
+
+        serializer = serializers.UserProfileSerializer(found_user)
+
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
+        
 

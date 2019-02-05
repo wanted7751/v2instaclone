@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from . import models, serializers
 from rest_framework import status
 
- 
+
 
 class Feed(APIView):
 
@@ -127,3 +127,5 @@ class Comment(APIView):
             return Response(status=status.HTTP_204_NO_CONTENT)
         except models.Comment.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
+
+

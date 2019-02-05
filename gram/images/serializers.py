@@ -6,6 +6,19 @@ from gram.users import models as user_models
 # views 에서 직접 json 화 시킨다. 여기서는 meta 참고만 하는 방식 작성
 
 
+class UserProfileImagesSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Image
+        fields = (
+            'id',
+            'file',
+            # 'comments',
+            'comment_count',
+            'like_count'
+        )
+
+
 class FeedUserSerializer(serializers.ModelSerializer):
 
 
@@ -69,3 +82,5 @@ class ImageSerializer(serializers.ModelSerializer):
             'like_count',
             'creator'
         )
+
+
