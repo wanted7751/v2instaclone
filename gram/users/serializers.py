@@ -25,7 +25,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
 
 
-class ExploreUserSerializer(serializers.ModelSerializer):
+class ListUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.User

@@ -36,10 +36,10 @@ class User(AbstractUser):
 
     @property
     def followers_count(self):
-        return self.followers_user_name.all().count()
-        # return self.followers.all().count()
+        # return self.followers_user_name.all().count()
+        return self.followers.all().count()
 
     @property
     def following_count(self):
-        return self.following_user_name.all().count()
         # return self.following_user_name.all().count()
+        return self.following.all().count()
