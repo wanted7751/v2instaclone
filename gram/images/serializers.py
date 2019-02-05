@@ -34,7 +34,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
 class LikeSerializer(serializers.ModelSerializer):
 
-    # creator = FeedUserSerializer()
+    creator = FeedUserSerializer()
 
     class Meta:
         model=models.Like
