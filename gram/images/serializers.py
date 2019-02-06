@@ -7,6 +7,17 @@ from taggit_serializer.serializers import (TagListSerializerField,TaggitSerializ
 # views 에서 직접 json 화 시킨다. 여기서는 meta 참고만 하는 방식 작성
 
 
+class SmallImageSerializer(serializers.ModelSerializer):
+
+    """ Used for the notifications """
+
+    class Meta:
+        model = models.Image
+        fields = (
+            'file',
+        )
+
+
 class CountImageSerializer(serializers.ModelSerializer):
 
     class Meta:

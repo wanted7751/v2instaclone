@@ -20,7 +20,8 @@ urlpatterns = [
         include("gram.users.urls", namespace="users"),
     ),
     path("accounts/", include("allauth.urls")),
-    path("images/", include('gram.images.urls', namespace='images'))
+    path("images/", include('gram.images.urls', namespace='images')),
+    path("notifications/", include('gram.notifications.urls', namespace = 'notifications'))
     # Your stuff: custom urls includes go here
 ] + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
