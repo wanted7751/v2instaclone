@@ -77,6 +77,7 @@ LOCAL_APPS = [
     'gram.users.apps.UsersAppConfig',
     # Your stuff: custom apps go here
     'gram.images.apps.ImagesConfig',
+    'gram.notifications.apps.NotificationsConfig'
     
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
