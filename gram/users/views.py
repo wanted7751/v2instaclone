@@ -2,6 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from . import models, serializers
 from rest_framework import status
+from gram.notifications import views as notification_views
 
 
 
@@ -23,6 +24,9 @@ class FollowUsers(APIView):
             
             user = request.user
 
+            # follow notification
+
+
             try: 
                 user_to_follow = models.User.objects.get(id=user_id)
             except models.User.DoesNotExist:
@@ -33,6 +37,8 @@ class FollowUsers(APIView):
 
             user.save()
             user_to_follow.save()
+
+            notification_views.create_notification(user, user_to_follow, 'follow')
 
             return Response(status=status.HTTP_200_OK)
 
