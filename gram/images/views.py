@@ -56,7 +56,7 @@ class LikeImage(APIView):
 
         #image__id 이 뜻은 id가 이미지 오브젝트 안에 있다는 의미
         #url 에서 해당 이미지 id의 좋아요를 한사람의 유저를 모두 갖고온다. 
-
+        # print(likes)
         # print(likes.values(''))
 
         # users = user_models.Users.objects.filter()
@@ -67,11 +67,15 @@ class LikeImage(APIView):
 
         users = user_models.User.objects.filter(id__in=like_creators_ids)
 
+        # print(users)
+
         serializer =  user_serializers.ListUserSerializer(users, many=True)
 
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
+        # serializer = serializers.ListLikeSerializer(likes, many=True)
 
+        # return Response(data=serializer.data, status=status.HTTP_200_OK)
         
 
     def post(self, request, image_id, format=None):

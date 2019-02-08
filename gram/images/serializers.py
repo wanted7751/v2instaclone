@@ -37,9 +37,9 @@ class FeedUserSerializer(serializers.ModelSerializer):
     class Meta:
         model= user_models.User
         fields=(
+            'id',
             'username',
             'profile_image',
-            
         )
 
 
@@ -53,7 +53,6 @@ class CommentSerializer(serializers.ModelSerializer):
             'id',
             'message',
             'creator'
-
         )
 
 
@@ -64,6 +63,16 @@ class LikeSerializer(serializers.ModelSerializer):
     class Meta:
         model=models.Like
         fields='__all__'
+
+# class ListLikeSerializer(serializers.ModelSerializer):
+
+    
+
+#     class Meta:
+#         model=models.Like
+#         fields=(
+#             'creator',
+#         )
 
 
 
