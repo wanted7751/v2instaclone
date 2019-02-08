@@ -64,15 +64,20 @@ class LikeSerializer(serializers.ModelSerializer):
         model=models.Like
         fields='__all__'
 
-# class ListLikeSerializer(serializers.ModelSerializer):
 
+class InputImageSerializer(serializers.ModelSerializer):
+
+    # file=serializer.ImageField(required=False)
+    # file=serializer.FileField(required=False)
     
 
-#     class Meta:
-#         model=models.Like
-#         fields=(
-#             'creator',
-#         )
+    class Meta:
+        model=models.Image
+        fields=(
+            'file',
+            'location',
+            'caption',
+        )
 
 
 
@@ -107,5 +112,6 @@ class ImageSerializer(serializers.ModelSerializer):
             'created_at'
 
         )
+
 
 

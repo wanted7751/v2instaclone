@@ -56,7 +56,7 @@ class LikeImage(APIView):
 
         #image__id 이 뜻은 id가 이미지 오브젝트 안에 있다는 의미
         #url 에서 해당 이미지 id의 좋아요를 한사람의 유저를 모두 갖고온다. 
-        # print(likes)
+    # print(likes)
         # print(likes.values(''))
 
         # users = user_models.Users.objects.filter()
@@ -66,6 +66,7 @@ class LikeImage(APIView):
         like_creators_ids = likes.values('creator_id')
 
         users = user_models.User.objects.filter(id__in=like_creators_ids)
+        #like_creators_ids 의 배열을 in 을통해 검색한다. 
 
         # print(users)
 
@@ -238,3 +239,27 @@ class ImageDetail(APIView):
         # many=True 를 안하는 이유는 serializer가 many가 아니기 때문인듯 하다. 
 
         return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+
+    def put(self, request, image_id, format=None):
+
+        user = request.user
+
+        try:
+            image = models.Image.objects.get(id=image_id, creator=user)
+        except models.Image.DoesNotExist:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+        serializer = serializers.InputImageSerializer(image, data=request.data, partial=True)
+
+        if serializer.is_valid():
+
+            serializer.save(creator=user)
+
+            return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+        else:
+            return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+    
