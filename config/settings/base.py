@@ -75,6 +75,9 @@ THIRD_PARTY_APPS = [
     'taggit_serializer',# tag serializer
     # 'django.contrib.sites',
     'rest_auth.registration',#enable restration
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.kakao',
+
     
 ]
 
@@ -282,3 +285,7 @@ REST_FRAMEWORK = {
 
 REST_USE_JWT=True
 ACCOUNT_LOGOUT_ON_GET = True
+
+# LOGIN_REDIRECT_URL = 'tif:index' # 로그인 후 리디렉션할 페이지
+# ACCOUNT_LOGOUT_REDIRECT_URL = "tif:index"  # 로그아웃 후 리디렉션 할 페이지
+# ACCOUNT_LOGOUT_ON_GET = True # 로그아웃 버튼 클릭 시 자동 로그아웃

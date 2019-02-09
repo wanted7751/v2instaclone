@@ -27,7 +27,7 @@ urlpatterns = [
     ),
     path("accounts/", include("allauth.urls")),
     path("images/", include('gram.images.urls', namespace='images')),
-    path("notifications/", include('gram.notifications.urls', namespace = 'notifications'))
+    path("notifications/", include('gram.notifications.urls', namespace = 'notifications')),
 
     # Your stuff: custom urls includes go here
 ] + static(
