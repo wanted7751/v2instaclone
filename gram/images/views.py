@@ -48,6 +48,25 @@ class Feed(APIView):
 #     return image.created_at
 
 
+    def post(self, request, format=None):
+
+        user = request.user
+
+        serializer = serializers.InputImageSerializer(data=request.data)
+
+        if serializer.is_valid():
+
+            serializer.save(creator=user)
+            # serializer.save()
+
+            return Response(data=serializer.data, status=status.HTTP_201_CREATED)
+
+        else:
+
+            return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
 class LikeImage(APIView):
 
     def get(self, request, image_id, format=None):
