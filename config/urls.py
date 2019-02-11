@@ -1,10 +1,13 @@
 from django.conf import settings
 from django.urls import include, path
+from django.urls import re_path
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 from rest_framework_jwt.views import obtain_jwt_token
+from gram import views
+
 
 urlpatterns = [
     # path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
@@ -15,6 +18,7 @@ urlpatterns = [
     # ),
     # path('api/token/auth/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     # path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    
     path("api-token-auth/", obtain_jwt_token),
     path('rest-auth/', include('rest_auth.urls')),
     # Django Admin, use {% url 'admin:index' %}
@@ -28,7 +32,7 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path("images/", include('gram.images.urls', namespace='images')),
     path("notifications/", include('gram.notifications.urls', namespace = 'notifications')),
-
+    re_path("", view=views.ReactAppView.as_view()),
     # Your stuff: custom urls includes go here
 ] + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
