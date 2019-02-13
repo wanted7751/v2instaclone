@@ -1,0 +1,9 @@
+// @import "reset-css/reset.css";
+@import 'reset-css';
+
+$color:red;
+
+.App {
+  text-align: center;
+  color:$color
+}
