@@ -1,9 +1,8 @@
-// @import "reset-css/reset.css";
 @import 'reset-css';
+// @import '../../config/_variables.module.scss';
+@import 'config/_variables.module.scss';
 
-$color:red;
 
-.App {
-  text-align: center;
-  color:$color
+body{
+    background-color:$bg-color;
 }
