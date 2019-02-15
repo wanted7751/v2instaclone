@@ -8,7 +8,6 @@ class Container extends Component{
     }
     render(){
         const {action} = this.state;
-        console.log(this.state);
         return (
                 <Auth  action={action} changeAction={this._changeAction} />
         )
