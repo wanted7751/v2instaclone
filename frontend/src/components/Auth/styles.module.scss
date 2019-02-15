@@ -1,4 +1,6 @@
 @import 'config/_variables.module.scss';
+
+
 .auth {
   width: 100%;
   max-width: $max-page-width;
@@ -11,7 +13,7 @@
   .column {
     width: 40%;
     &:last-child {
-      width: 35%;
+      width: 38%;
       margin-left: 35px;
     }
     .appBox {
@@ -33,12 +35,20 @@
       text-align: center;
       padding: 15px;
       @include boxBorder(no);
-      .changeLink {
+      .change-link {
         color: $light-blue;
         cursor: pointer;
       }
-      p {
+      .text {
         margin: 15px;
+      }
+    }
+    .formBox {
+      margin-bottom: 10px;
+      padding: 0 40px;
+      padding-top: 30px;
+      img {
+        height: 60px;
       }
     }
   }
