@@ -10,36 +10,28 @@ const Auth = (props, context) => (
         </div>
         <div className={styles.column}>
             <div className={styles.whiteBox}>
-                {(() => {
-                    switch (props.action) {
-                        case "login":
-                            return (
-                                <p>
-                                    Don't have an account?{" "}
-                                    <span
-                                        className={styles.changeLink}
-                                        onClick={props.changeAction}
-                                    >
-                                        Sign up
+                {props.action === "login" &&(
+                    <p>
+                        Don't have an account?{" "}
+                        <span
+                            className={styles.changeLink}
+                            onClick={props.changeAction}
+                        >
+                            Sign up
                                      </span>
-                                </p>
-                            );
-                        case "signup":
-                            return (
-                                <p>
-                                    Have an account?{" "}
-                                    <span
-                                        className={styles.changeLink}
-                                        onClick={props.changeAction}
-                                    >
-                                        Log in
+                    </p>
+                )}
+                {props.action === 'signup'&& (
+                    <p>
+                        Have an account?{" "}
+                        <span
+                            className={styles.changeLink}
+                            onClick={props.changeAction}
+                        >
+                            Log in
                   </span>
-                                </p>
-                            );
-                        default:
-                            return null;
-                    }
-                })()}
+                    </p>
+                )}
             </div>
             <div className={styles.appBox}>
                 <span>Get the app</span>
