@@ -11,7 +11,7 @@ const LoginForm = (props, context) => (
         type="text"
         placeholder={context.t("Username")}
         className={styles.textInput}
-        value= {props.usernameValue}
+        value={props.usernameValue}
         onChange={props.handleInputChange}
         name="username"
       />
@@ -19,7 +19,7 @@ const LoginForm = (props, context) => (
         type="password"
         placeholder={context.t("Password")}
         className={styles.textInput}
-        value= {props.passwordValue}
+        value={props.passwordValue}
         onChange={props.handleInputChange}
         name="password"
       />
@@ -31,8 +31,19 @@ const LoginForm = (props, context) => (
     </form>
     <span className={styles.divider}>{context.t("or")}</span>
     <span className={styles.facebookLink}>
-      <ion-icon class={styles.login_logo} name="logo-facebook" />
-      {context.t("Log in with Facebook")}
+    
+      {/* <ion-icon class={styles.login_logo} name="logo-facebook" />
+      {context.t("Log in with Facebook")} */}
+      <FacebookLogin
+        appId="526117531172293"
+        autoLoad={true}
+        fields="name,email,picture"
+        callback={props.handleFacebookLogin}
+        cssClass={styles.login_logo}
+        icon="fa-facebook-official"
+        
+      />
+     
     </span>
     <span className={styles.forgotLink}>Forgot password?</span>
   </div>
@@ -43,6 +54,7 @@ LoginForm.propTypes = {
     passwordValue:PropTypes.string.isRequired,
     handleInputChange:PropTypes.func.isRequired,
     handleSubmit:PropTypes.func.isRequired,
+    handleFacebookLogin:PropTypes.func.isRequired,
 
 }
 
