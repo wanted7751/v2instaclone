@@ -9,7 +9,12 @@ export const translations = {
     'Privacy': '정책',
     'Terms': '기간',
     'Directory': '사전',
-    'Language': '',
+    'Language': '언어',
+    'Username': '',
+    'Password': '비밀번호',
+    'Log in': '로그인',
+    'or': '또는',
+    'Log in with Facebook': '페이스북 로그인',
   },
   'options': {
   },

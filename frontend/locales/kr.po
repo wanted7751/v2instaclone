@@ -40,5 +40,25 @@ msgstr "사전"
 
 #: src/components/Footer/index.js
 msgid "Language"
+msgstr "언어"
+
+#: src/components/LoginForm/presenter.js
+msgid "Username"
 msgstr ""
+
+#: src/components/LoginForm/presenter.js
+msgid "Password"
+msgstr "비밀번호"
+
+#: src/components/LoginForm/presenter.js
+msgid "Log in"
+msgstr "로그인"
+
+#: src/components/LoginForm/presenter.js
+msgid "or"
+msgstr "또는"
+
+#: src/components/LoginForm/presenter.js
+msgid "Log in with Facebook"
+msgstr "페이스북 로그인"
 
