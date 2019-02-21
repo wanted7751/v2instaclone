@@ -42,6 +42,7 @@ const LoginForm = (props, context) => (
         cssClass={styles.login_logo}
         icon="fa-facebook-official"
         
+        
       />
      
     </span>

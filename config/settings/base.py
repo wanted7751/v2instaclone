@@ -291,3 +291,7 @@ CORS_ORIGIN_ALLOW_ALL=True
 # LOGIN_REDIRECT_URL = 'tif:index' # 로그인 후 리디렉션할 페이지
 # ACCOUNT_LOGOUT_REDIRECT_URL = "tif:index"  # 로그아웃 후 리디렉션 할 페이지
 # ACCOUNT_LOGOUT_ON_GET = True # 로그아웃 버튼 클릭 시 자동 로그아웃
+
+JWT_AUTH = {
+    'JWT_VERIFY_EXPIRATION':False
+}
