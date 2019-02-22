@@ -23,9 +23,9 @@ class Container extends Component{
         );
     }
     _handleInputChange = event => {
-        // const {target:{value,name}}  = event
-        const name = event.target.name
-        const value = event.target.value
+        const {target:{value,name}}  = event
+        // const name = event.target.name
+        // const value = event.target.value
         // console.log(event.target.value,event.target.name)
         this.setState({
             [name]:value
@@ -36,7 +36,7 @@ class Container extends Component{
             // 즉 username:value 가 된다. 
             // 또한 오브젝트의 키값은 변수가 아닌 string 으로 받아들이기 때문에 저렇게 접근을 해줘야한다. 
         })
-        console.log(event.target.name, event.target.value)
+        // console.log(event.target.name, event.target.value)
         
 
     }
@@ -46,9 +46,10 @@ class Container extends Component{
         // redux action will be here
     }
     _handleFacebookLogin = response => {
-        console.log(response)
+        // console.log(response);
         const { facebookLogin } = this.props
         facebookLogin(response.accessToken)
+
 
     }
 }

@@ -31,20 +31,17 @@ const LoginForm = (props, context) => (
     </form>
     <span className={styles.divider}>{context.t("or")}</span>
     <span className={styles.facebookLink}>
-    
       {/* <ion-icon class={styles.login_logo} name="logo-facebook" />
       {context.t("Log in with Facebook")} */}
       <FacebookLogin
         appId="526117531172293"
-        autoLoad={true}
+        autoLoad={false}
         fields="name,email,picture"
         callback={props.handleFacebookLogin}
         cssClass={styles.login_logo}
         icon="fa-facebook-official"
-        
-        
+        textButton={context.t("Login with Facebook")}
       />
-     
     </span>
     <span className={styles.forgotLink}>Forgot password?</span>
   </div>
