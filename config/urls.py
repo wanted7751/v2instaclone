@@ -18,11 +18,11 @@ urlpatterns = [
     # ),
     # path('api/token/auth/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     # path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
-    
-    path("api-token-auth/", obtain_jwt_token),
+    path(settings.ADMIN_URL, admin.site.urls),
+    # path("api-token-auth/", obtain_jwt_token),
     path('rest-auth/', include('rest_auth.urls')),
     # Django Admin, use {% url 'admin:index' %}
-    path(settings.ADMIN_URL, admin.site.urls),
+    
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
     # User management
     path(

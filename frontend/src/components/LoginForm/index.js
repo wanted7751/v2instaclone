@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         // facebookLogin 이라는 함수를 container.js 에서 부르면 dispatch된다. 이하의 코드들이
         // 그 이하의 코드들은 actionCreators 에 있는 facebookLogin 이다.
         // facebookLogin: access_token *노션 object of full of function 참고 
-        // 
+        // 노션의 object full of function  찾아보기
     };
 };
 

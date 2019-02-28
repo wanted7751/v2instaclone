@@ -7,19 +7,20 @@ class Container extends Component{
         username:"",
         password:"",
         email:"",
-        fullname:"",
+        name:"",
     }
     static propTypes = {
         facebookLogin:PropTypes.func.isRequired,
+        createAccount:PropTypes.func.isRequired,
     }
     render(){
-        const {username, password, email, fullname} = this.state
+        const {username, password, email, name} = this.state
         return(
             <SignupForm 
                 usernameValue={username}
                 passwordValue={password}
                 emailValue={email}
-                fullnameValue={fullname}
+                nameValue={name}
                 handleInputChange = {this._handleInputChange}
                 handleSubmit = {this._handleSubmit}
                 handleFacebookLogin = {this._handleFacebookLogin}
@@ -35,10 +36,15 @@ class Container extends Component{
             [name]:value
         })
         // console.log(this.state)
+        // console.log(event.target.name)
     }
     _handleSubmit = event => {
+        const {createAccount} = this.props
+        const {username, password, email,name } = this.state
+        
         event.preventDefault();
-        // console.log(event.target.name)
+        //  console.log(event.target.name)
+        createAccount(username, password, email,name)
     }
 
     _handleFacebookLogin = response => {
