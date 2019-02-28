@@ -24,20 +24,48 @@ function facebookLogin(access_token){
                 "Content-Type":"application/json"
             },
             body:JSON.stringify({
-                access_token
+                access_token:access_token
             })
         })
         .then(response => response.json())
         // .then(json=> console.log(json))
         .then(json=>{
             if(json.token){
-                localStorage.setItem("jwt",json.token)
+                // localStorage.setItem("jwt",json.token)
                 dispatch(save_token(json.token));
+            }
+        })
+        .catch(err => console.log(err))
+        // response를 한 후에 응답이 오면 json, 에러가 오면 catch err 를 잡아준다. 
+    }
+}
+
+  // 미들웨어는 디스패치 메서드를 함수에 인수로 보내서,
+  // 함수가 직접 액션을 보낼 수 있도록 합니다.
+  
+function usernameLogin(username, password){
+    return function(dispatch){
+        fetch("/rest-auth/login/",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+              username:username,
+              password:password  
+            })
+        })
+        .then(response => response.json())
+        .then(json=>{
+            if(json.token){
+                // localStorage.setItem("jwt", json.token)
+                dispatch(save_token(json.token))
             }
         })
         .catch(err => console.log(err))
     }
 }
+
 
 // initial state
 
@@ -62,7 +90,10 @@ function reducer(state = initialState, action){
 // reducer functions
 
 function applySetToken(state, action){
-    const {token} = action
+    // const {token} = action
+    const token = action.token
+
+    localStorage.setItem("jwt",token)
     return {
         ...state,
         isLoggedIn:true,
@@ -74,7 +105,8 @@ function applySetToken(state, action){
 // exports
 
 const actionCreators = {
-    facebookLogin: facebookLogin
+    facebookLogin: facebookLogin,
+    usernameLogin
 }
 
 export {actionCreators};

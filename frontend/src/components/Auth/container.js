@@ -21,6 +21,7 @@ class Container extends Component{
             console.log(prevState)
             // const action = prevState.action 이와 같다. 
             // callback??
+            // setState 는 비동기적으로 이루어지기 때문에 객체형이 아닌 함수형으로 줘서 변형을 줘야한다. 
             if(action === 'login'){
                 return{
                     action: "signup"
